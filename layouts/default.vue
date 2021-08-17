@@ -137,7 +137,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+html {
+  font-family: 'Nexa', 'Roboto';
+}
+main {
+  padding: 0px !important;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+.branco {
+  color: white !important;
+  mix-blend-mode: difference !important;
+}
+.preto {
+  color: black !important;
+  mix-blend-mode: exclusion !important;
+}
+
 header {
   width: calc(100vw - 120px);
 }

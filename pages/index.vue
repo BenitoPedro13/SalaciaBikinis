@@ -39,31 +39,9 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 @import url('http://fonts.cdnfonts.com/css/nexa-bold');
 @import url('http://fonts.cdnfonts.com/css/qaligo');
-
-html {
-  font-family: 'Nexa', 'Roboto';
-}
-main {
-  padding: 0px !important;
-}
-img {
-  display: block;
-  max-width: 100%;
-}
-a {
-  text-decoration: none;
-}
-.branco {
-  color: white !important;
-  mix-blend-mode: difference !important;
-}
-.preto {
-  color: black !important;
-  mix-blend-mode: exclusion !important;
-}
 
 .hero {
   position: relative;
@@ -71,21 +49,27 @@ a {
   align-items: center;
   justify-content: center;
 }
+
 .hero-img {
   width: 100vw !important;
 }
-.hero .content {
+
+.content {
   position: absolute;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
+
 .seta {
   position: relative;
   right: 300px;
+
+  :hover {
+    animation: 0.7s enviar infinite;
+  }
 }
-.content .seta:hover {
-  animation: 0.7s enviar infinite;
-}
+
 @keyframes enviar {
   0% {
     transform: translateX(0);
@@ -97,51 +81,58 @@ a {
     transform: translateX(0);
   }
 }
-.hero .cta {
-  height: 220px;
-  position: relative;
+
+%generic-base-cta {
   display: flex;
+  align-items: center;
+}
+
+%base-cta {
+  @extend %generic-base-cta;
+  font-style: normal;
+  text-align: center;
+  color: white;
+}
+
+.cta {
+  @extend %generic-base-cta;
+  height: 220px;
+  right: 68.5px;
+  position: relative;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-}
-.cta p {
-  margin: 0;
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 32px;
-  line-height: 58px;
-  display: flex;
-  align-items: flex-end;
-  text-align: center;
-  color: white;
-}
-.cta h2 {
-  font-family: Qaligo;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 70px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: white;
-}
-.cta .link {
-  color: white;
-  width: 280px;
-  height: 56px;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background: #72c6d5;
-  font-family: Nexa;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
+
+  p {
+    @extend %base-cta;
+    margin: 0;
+    font-family: 'Nexa';
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 58px;
+    align-items: flex-end;
+  }
+
+  h2 {
+    @extend %base-cta;
+    font-family: 'Qaligo';
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 70px;
+    align-items: center;
+  }
+
+  .link {
+    @extend %base-cta;
+    width: 280px;
+    height: 56px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: #72c6d5;
+    font-family: 'Nexa';
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 </style>
