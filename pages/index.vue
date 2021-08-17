@@ -1,20 +1,7 @@
 <template>
   <div class="">
     <section class="hero">
-      <v-img
-        src="/_nuxt/static/ana_deitada.jpeg"
-        lazy-src="/_nuxt/static/ana_deitada-min.jpeg"
-        class="hero-img"
-      >
-        <template #placeholder>
-          <v-row class="fill-height ma-0" align="center" justify="center">
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-      </v-img>
+      <img src="~/static/ana_deitada.jpeg" class="hero-img" />
       <div class="content">
         <v-btn text class="seta">
           <svg
@@ -83,6 +70,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.hero-img {
+  width: 100vw !important;
 }
 .hero .content {
   position: absolute;
