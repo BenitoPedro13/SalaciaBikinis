@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-app-bar flat absolute color="transparent" height="80" app hide-on-scroll>
-      <nuxt-link class="branco" to="/">
+      <nuxt-link to="/">
         <v-toolbar-title v-text="title" />
       </nuxt-link>
       <v-spacer />
@@ -21,7 +21,7 @@
       </v-btn-toggle>
     </v-app-bar>
     <div class="social-line">
-      <v-btn text class="shop">
+      <button class="shop">
         <svg width="51" height="36" viewBox="0 0 51 48" fill="none">
           <path
             d="M38.9848 41.1522L37.4151 14.8696C37.3497 13.5 36.1724 12.3913 34.799 12.3913H28.8473V9.58696C28.8473 4.30435 24.5307 0 19.233 0C13.9353 0 9.61874 4.30435 9.61874 9.58696V12.3913H3.66705C2.22818 12.3913 1.11633 13.5 1.05092 14.8696L0.00447167 41.2174C-0.0609315 42.9783 0.5931 44.6739 1.83576 45.9783C3.07842 47.2826 4.7789 48 6.54479 48H32.379C34.2103 48 35.9108 47.2826 37.1535 45.9783C38.3961 44.6739 39.1156 42.9783 38.9848 41.1522ZM12.3003 9.58696C12.3003 5.73913 15.4396 2.6087 19.2984 2.6087C23.1572 2.6087 26.2965 5.73913 26.2965 9.58696V12.3913H12.3003V9.58696ZM35.3222 44.2174C34.6027 45 33.5563 45.4565 32.4444 45.4565H6.61019C5.56374 45.4565 4.51729 45 3.79785 44.2826C3.07842 43.5 2.686 42.5217 2.686 41.413L3.73245 15.0652H9.68414V26.3478H12.3003V15.0652H26.2311V26.3478H28.8473V15.0652H34.799L36.3686 41.3478C36.434 42.3913 36.107 43.4348 35.3222 44.2174Z"
@@ -33,12 +33,12 @@
             fill="black"
           />
         </svg>
-      </v-btn>
+      </button>
       <v-btn class="line"></v-btn>
-      <a target="_blank" href="https://www.instagram.com" class="insta"
+      <a target="_blank" href="https://www.instagram.com" class="social"
         >instagram</a
       >
-      <a target="_blank" href="https://wa.me/5521991672783" class="wpp"
+      <a target="_blank" href="https://wa.me/5521991672783" class="social"
         >whatsapp</a
       >
     </div>
@@ -92,15 +92,15 @@
           © Salacia 2021. Todos os Direitos <br />
           Reservados
         </div>
-        <div class="terms">
+        <div class="copyright">
           <nuxt-link to="/servicos">
-            <v-btn text class="term">serviços</v-btn>
+            <v-btn text class="copyright">serviços</v-btn>
           </nuxt-link>
           <nuxt-link to="/institucional">
-            <v-btn text class="term">institucional</v-btn>
+            <v-btn text class="copyright">institucional</v-btn>
           </nuxt-link>
           <nuxt-link to="/cookies">
-            <v-btn text class="term">cookies</v-btn>
+            <v-btn text class="copyright">cookies</v-btn>
           </nuxt-link>
         </div>
       </div>
@@ -138,8 +138,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$background-color-footer: #72c6d5;
+
+$font-color-primary: white !important;
+$font-color-secondary: black !important;
+
+$font-stack-primary: 'Nexa', 'Roboto';
+$font-stack-secondary: 'Qaligo';
+
+$font-size-header-logo: 28px;
+$font-size-line: 24px;
+$font-size-footer-big: 32px;
+$font-size-footer-small: 16px;
+$font-size-footer-cta-header: 20px;
+$font-size-footer-cta-subheader: 28px;
+$font-size-copyright: 18px;
+
 html {
-  font-family: 'Nexa', 'Roboto';
+  font-family: $font-stack-primary;
 }
 main {
   padding: 0px !important;
@@ -151,25 +167,18 @@ img {
 a {
   text-decoration: none;
 }
-.branco {
-  color: white !important;
-  mix-blend-mode: difference !important;
-}
-.preto {
-  color: black !important;
-  mix-blend-mode: exclusion !important;
-}
 
 header {
   width: calc(100vw - 120px);
 }
 
 .v-toolbar__title {
-  mix-blend-mode: difference !important;
-  font-family: 'Nexa';
-  font-weight: 700;
-  font-size: 28px;
+  font-family: $font-stack-primary;
+  font-weight: bold;
+  color: $font-color-primary;
+  font-size: $font-size-header-logo;
 }
+
 .nav {
   width: 35%;
   display: flex;
@@ -183,34 +192,50 @@ header {
 }
 
 .nav-menu {
-  font-family: 'Nexa';
+  font-family: $font-stack-primary;
   margin: 0 auto;
   text-transform: lowercase !important;
-  font-weight: 300;
+  font-weight: thin;
   display: flex;
   position: relative;
   flex-direction: column;
-  color: white !important;
+  color: $font-color-primary;
+
+  ::after {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: currentColor;
+    border-radius: 50%;
+    top: 85%;
+  }
 }
-.nuxt-link-exact-active .nav-menu {
-  font-weight: 700;
-}
-.nav-menu::after {
-  content: '';
-  display: none;
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: currentColor;
-  border-radius: 50%;
-  top: 85%;
-}
-.nuxt-link-exact-active .nav-menu::after {
-  display: block;
+.nuxt-link-exact-active {
+  .nav-menu {
+    font-weight: bold;
+
+    ::after {
+      display: block;
+    }
+  }
 }
 
-.shop.v-btn::before {
-  background-color: transparent;
+@keyframes shop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shop:hover {
+  animation: 1.3s shop infinite;
 }
 
 .social-line {
@@ -224,53 +249,35 @@ header {
   left: 91.1%;
   top: 22px;
   z-index: 2;
-}
 
-button.v-btn.line {
-  content: '' !important;
-  display: block !important;
-  height: 362px !important;
-  min-width: 2px;
-  max-width: 2px !important;
-  width: 2px !important;
-  background: white;
-  padding: 0 !important;
-  margin: 30px 5px 0 0;
-}
-
-.wpp {
-  display: block;
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 29px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: white;
-  transform: rotate(90deg);
-  margin: 100px 5px 0 0;
-}
-
-.insta {
-  display: block;
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 29px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: white;
-  transform: rotate(90deg);
-  margin: 100px 5px 0 0;
+  .social {
+    font-family: $font-stack-primary;
+    font-weight: thin;
+    font-size: $font-size-line;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $font-color-primary;
+    transform: rotate(90deg);
+    margin: 100px 5px 0 0;
+  }
+  .line {
+    content: '' !important;
+    display: block !important;
+    height: 362px !important;
+    min-width: 2px;
+    max-width: 2px !important;
+    width: 2px !important;
+    background: $font-color-primary;
+    padding: 0 !important;
+    margin: 30px 5px 0 0;
+  }
 }
 
 .v-footer {
   height: 600px;
-  background: #72c6d5;
+  background: $background-color-footer;
   position: relative;
   padding: 0 100px;
   justify-content: space-evenly;
@@ -278,90 +285,68 @@ button.v-btn.line {
   flex-direction: column;
 }
 
-.somos-salacia h1,
-.somos-salacia p {
-  margin-top: 0;
-  margin-bottom: 0;
+.somos-salacia {
+  > * {
+    font-family: $font-stack-primary;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    color: $font-color-primary;
+  }
+  p {
+    font-weight: thin;
+    font-size: $font-size-footer-small;
+    line-height: 20px;
+  }
+  h1 {
+    font-weight: bold;
+    font-size: $font-size-footer-big;
+    line-height: 32px;
+  }
 }
 
-.somos-salacia p {
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 20px;
+%base-footer-cta {
   display: flex;
-  align-items: center;
-  color: white;
-}
-
-.somos-salacia h1 {
-  font-family: Nexa;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 32px;
-  display: flex;
-  align-items: center;
-  color: white;
+  align-items: flex-end;
+  color: $font-color-primary;
 }
 
 .conte {
-  font-family: 'Qaligo';
-  font-style: normal;
+  @extend %base-footer-cta;
+  font-family: $font-stack-secondary;
   font-weight: normal;
-  font-size: 20px;
+  font-size: $font-size-footer-cta-header;
   line-height: 80px;
-  display: flex;
-  align-items: flex-end;
-  color: white;
 }
 .journal {
-  font-family: Nexa;
-  font-style: normal;
+  @extend %base-footer-cta;
+  font-family: $font-stack-primary;
   font-weight: bold;
-  font-size: 28px;
+  font-size: $font-size-footer-cta-subheader;
   line-height: 36px;
-  display: flex;
-  align-items: flex-end;
-  color: white;
 }
 form {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
 }
 input {
   margin-right: 30px;
-}
-form input {
   font-weight: bold;
-  font-size: 32px;
+  font-size: $font-size-footer-big;
   line-height: 48px;
-  color: white;
+  color: $font-color-primary;
   outline: none;
   opacity: 0.5;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid $font-color-primary;
+
+  :hover {
+    opacity: 1;
+    transition: 0.3s;
+  }
 }
-form input:hover {
-  opacity: 1;
-  transition: 0.3s;
-}
-.enviar {
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-transform: lowercase;
-  width: 250px !important;
-  color: white;
-}
-.enviar:hover svg {
-  animation: 0.7s enviar infinite;
-}
+
 @keyframes enviar {
   0% {
     transform: translateX(0);
@@ -373,40 +358,41 @@ form input:hover {
     transform: translateX(0);
   }
 }
-.policies {
-  width: 100%;
+
+.enviar {
+  font-weight: bold;
+  font-size: $font-size-footer-big;
+  line-height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: lowercase;
+  width: 250px !important;
+  color: $font-color-primary;
+
+  :hover svg {
+    animation: 0.7s enviar infinite;
+  }
 }
-.copy {
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 22px;
-  display: flex;
+
+%base-footer-policies {
   align-items: flex-end;
-  text-transform: uppercase;
-  color: white;
-}
-.terms {
-  font-family: 'Nexa';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 22px;
+  color: $font-color-primary;
   display: flex;
-  align-items: flex-end;
-  text-align: right;
-  text-transform: uppercase;
-  color: white;
-}
-.term {
-  font-family: 'Nexa';
-  font-weight: 300;
-  font-size: 18px;
+  font-family: $font-stack-primary;
+  font-weight: thin;
+  font-size: $font-size-copyright;
   line-height: 22px;
-  color: white;
+  text-transform: uppercase;
+}
+
+.policies {
+  @extend %base-footer-policies;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright {
+  @extend %base-footer-policies;
 }
 </style>

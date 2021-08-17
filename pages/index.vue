@@ -43,6 +43,10 @@
 @import url('http://fonts.cdnfonts.com/css/nexa-bold');
 @import url('http://fonts.cdnfonts.com/css/qaligo');
 
+a {
+  text-decoration: none;
+}
+
 .hero {
   position: relative;
   display: flex;
