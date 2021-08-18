@@ -58,8 +58,22 @@
       </div>
       <div class="journal">fique atualizado sobre nossos produtos.</div>
       <form action="">
-        <input id="nome" type="text" name="nome" placeholder="nome" />
-        <input id="email" type="email" name="email" placeholder="email" />
+        <input
+          id="nome"
+          v-model="name"
+          type="text"
+          name="nome"
+          placeholder="nome"
+          :class="isNameEmpty"
+        />
+        <input
+          id="email"
+          v-model="email"
+          type="email"
+          name="email"
+          placeholder="email"
+          :class="isEmailEmpty"
+        />
         <v-btn text class="enviar"
           >enviar
           <svg
@@ -112,9 +126,9 @@
 export default {
   data() {
     return {
+      name: '',
+      email: '',
       toggle_exclusive: undefined,
-      clipped: false,
-      drawer: false,
       fixed: false,
       items: [
         {
@@ -128,10 +142,21 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'salacia'
+    }
+  },
+  computed: {
+    isEmailEmpty() {
+      if (this.email.length > 0 && this.email !== undefined) {
+        return 'active'
+      }
+      return ''
+    },
+    isNameEmpty() {
+      if (this.name.length > 0 && this.name !== undefined) {
+        return 'active'
+      }
+      return ''
     }
   }
 }
@@ -340,11 +365,16 @@ input {
   outline: none;
   opacity: 0.5;
   border-bottom: 1px solid $font-color-primary;
+}
 
-  :hover {
-    opacity: 1;
-    transition: 0.3s;
-  }
+input:hover {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+input.active {
+  opacity: 1;
+  transition: 0.3s;
 }
 
 @keyframes enviar {
