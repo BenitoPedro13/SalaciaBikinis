@@ -1,6 +1,14 @@
 <template>
   <v-app dark>
-    <v-app-bar flat absolute color="transparent" height="80" app hide-on-scroll>
+    <v-app-bar
+      flat
+      hide-on-scroll
+      :collapse="!collapseOnScroll"
+      :collapse-on-scroll="collapseOnScroll"
+      color="transparent"
+      height="80"
+      app
+    >
       <nuxt-link to="/">
         <v-toolbar-title v-text="title" />
       </nuxt-link>
@@ -129,6 +137,7 @@ export default {
       name: '',
       email: '',
       toggle_exclusive: undefined,
+      collapseOnScroll: true,
       fixed: false,
       items: [
         {
